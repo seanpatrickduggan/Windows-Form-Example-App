@@ -23,17 +23,20 @@ namespace WindowsFormApp
             return Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories).Length;
         }
 
-        public Task ProcessFiles(IProgress<int> progress)
+        public Task ProcessFiles(IProgress<Tuple<int, string>> progress)
         {
             return Task.Run(() =>
             {
-                for (int i = 0; i < fileCount; i++)
+                var files = Directory.GetFiles(selectedFolder, "*.*", SearchOption.AllDirectories);
+                var numFiles = files.Length;
+                var fileCounter = 0;
+                foreach (var file in files)
                 {
-                    // Simulate file processing time
-                    System.Threading.Thread.Sleep(1); // sleep for 50ms
-
-                    // Report progress
-                    progress.Report(i + 1);
+                    fileCounter++;
+                    var fileReport = file.Replace(selectedFolder, "");
+                    var progresReport = fileCounter * 100 / numFiles;
+                    progress.Report(new Tuple<int, string>(progresReport, fileReport));
+                    System.Threading.Thread.Sleep(10); // sleep for 50ms
                 }
             });
         }

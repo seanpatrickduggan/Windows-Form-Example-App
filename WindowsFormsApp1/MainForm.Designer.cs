@@ -36,16 +36,18 @@ namespace WindowsFormApp
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.processFiles_button = new System.Windows.Forms.Button();
             this.numOfFiles_label = new System.Windows.Forms.Label();
+            this.currentFile = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // folderTextBox
             // 
-            this.folderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.folderTextBox.Location = new System.Drawing.Point(17, 16);
+            this.folderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.folderTextBox.Location = new System.Drawing.Point(17, 22);
             this.folderTextBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.folderTextBox.Name = "folderTextBox";
-            this.folderTextBox.Size = new System.Drawing.Size(632, 38);
+            this.folderTextBox.Size = new System.Drawing.Size(632, 26);
             this.folderTextBox.TabIndex = 0;
+            this.folderTextBox.TextChanged += new System.EventHandler(this.selectedFolderTextBoxChanged);
             // 
             // folderSelect
             // 
@@ -72,15 +74,16 @@ namespace WindowsFormApp
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 119);
+            this.progressBar1.Location = new System.Drawing.Point(12, 150);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(647, 38);
             this.progressBar1.TabIndex = 3;
             // 
             // processFiles_button
             // 
+            this.processFiles_button.Enabled = false;
             this.processFiles_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.processFiles_button.Location = new System.Drawing.Point(665, 119);
+            this.processFiles_button.Location = new System.Drawing.Point(665, 150);
             this.processFiles_button.Name = "processFiles_button";
             this.processFiles_button.Size = new System.Drawing.Size(119, 38);
             this.processFiles_button.TabIndex = 4;
@@ -91,18 +94,31 @@ namespace WindowsFormApp
             // numOfFiles_label
             // 
             this.numOfFiles_label.AutoSize = true;
+            this.numOfFiles_label.Enabled = false;
             this.numOfFiles_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.numOfFiles_label.Location = new System.Drawing.Point(17, 81);
             this.numOfFiles_label.Name = "numOfFiles_label";
             this.numOfFiles_label.Size = new System.Drawing.Size(235, 20);
             this.numOfFiles_label.TabIndex = 5;
             this.numOfFiles_label.Text = "Number of files: (Select a folder)";
+            this.numOfFiles_label.Visible = false;
+            // 
+            // currentFile
+            // 
+            this.currentFile.AutoSize = true;
+            this.currentFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.currentFile.Location = new System.Drawing.Point(17, 127);
+            this.currentFile.Name = "currentFile";
+            this.currentFile.Size = new System.Drawing.Size(99, 20);
+            this.currentFile.TabIndex = 6;
+            this.currentFile.Text = "Current File: ";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 169);
+            this.ClientSize = new System.Drawing.Size(796, 200);
+            this.Controls.Add(this.currentFile);
             this.Controls.Add(this.numOfFiles_label);
             this.Controls.Add(this.processFiles_button);
             this.Controls.Add(this.progressBar1);
@@ -127,5 +143,6 @@ namespace WindowsFormApp
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button processFiles_button;
         private System.Windows.Forms.Label numOfFiles_label;
+        private System.Windows.Forms.Label currentFile;
     }
 }
