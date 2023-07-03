@@ -30,6 +30,7 @@ namespace WindowsFormApp
                 var files = Directory.GetFiles(selectedFolder, "*.*", SearchOption.AllDirectories);
                 var numFiles = files.Length;
                 var fileCounter = 0;
+                var logFileFolder = Path.Combine(selectedFolder, "log");
                 foreach (var file in files)
                 {
                     fileCounter++;
