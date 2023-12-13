@@ -37,7 +37,7 @@ namespace WindowsFormApp
                     var fileReport = file.Replace(selectedFolder, "");
                     var progresReport = fileCounter * 100 / numFiles;
                     progress.Report(new Tuple<int, string>(progresReport, fileReport));
-                    System.Threading.Thread.Sleep(10); // sleep for 50ms
+                    System.Threading.Thread.Sleep(10); // sleep to simulate processing time
                 }
             });
         }
